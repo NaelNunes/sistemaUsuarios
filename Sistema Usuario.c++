@@ -5,7 +5,7 @@
 #include <string.h>
 
 
-// FunÁ„o para movimentar o cursor no terminal
+// Fun√ß√£o para movimentar o cursor no terminal
 void gotoxy(int x, int y) {
     COORD coord;
     coord.X = x;
@@ -13,7 +13,7 @@ void gotoxy(int x, int y) {
     SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
 }
 
-// FunÁ„o para obter o tamanho da janela do console
+// Fun√ß√£o para obter o tamanho da janela do console
 void getConsoleSize(int &width, int &height) {
     CONSOLE_SCREEN_BUFFER_INFO csbi;
     GetConsoleScreenBufferInfo(GetStdHandle(STD_OUTPUT_HANDLE), &csbi);
@@ -21,7 +21,7 @@ void getConsoleSize(int &width, int &height) {
     height = csbi.srWindow.Bottom - csbi.srWindow.Top + 1;
 }
 
-// FunÁ„o para desenhar as bordas do ret‚ngulo
+// Fun√ß√£o para desenhar as bordas do ret√¢ngulo
 void drawBorder(int x1, int y1, int x2, int y2) {
     // Desenha as bordas superior e inferior
     for (int x = x1; x <= x2; ++x) {
@@ -40,29 +40,29 @@ void drawBorder(int x1, int y1, int x2, int y2) {
     }
 }
 
-// FunÁ„o para desenhar a interface de login centralizada
+// Fun√ß√£o para desenhar a interface de login centralizada
 void mostrarInterfaceLogin() {
     system("cls");  // Limpa a tela
 
     int screenWidth, screenHeight;
-    getConsoleSize(screenWidth, screenHeight);  // ObtÈm o tamanho da janela do console
+    getConsoleSize(screenWidth, screenHeight);  // Obt√©m o tamanho da janela do console
 
-    // Definindo as dimensıes do ret‚ngulo
-    int boxWidth = 40;  // Largura do ret‚ngulo (·rea do formul·rio de login)
-    int boxHeight = 10; // Altura do ret‚ngulo
+    // Definindo as dimens√µes do ret√¢ngulo
+    int boxWidth = 40;  // Largura do ret√¢ngulo (√°rea do formul√°rio de login)
+    int boxHeight = 10; // Altura do ret√¢ngulo
 
-    // Calculando a posiÁ„o para centralizar o ret‚ngulo
+    // Calculando a posi√ß√£o para centralizar o ret√¢ngulo
     int startX = (screenWidth - boxWidth) / 2;
     int startY = (screenHeight - boxHeight) / 2;
 
-    // Desenhando a borda do ret‚ngulo
+    // Desenhando a borda do ret√¢ngulo
     drawBorder(startX, startY, startX + boxWidth - 1, startY + boxHeight - 1);
 
-    // Adicionando o tÌtulo
+    // Adicionando o t√≠tulo
     gotoxy(startX + 7, startY + 1);
     WriteConsole(GetStdHandle(STD_OUTPUT_HANDLE), "***** Tela de Login *****", 26, NULL, NULL);
 
-    // Campos de usu·rio e senha
+    // Campos de usu√°rio e senha
     gotoxy(startX + 2, startY + 3);
     WriteConsole(GetStdHandle(STD_OUTPUT_HANDLE), "Usuario: ", 8, NULL, NULL);
 
@@ -71,13 +71,13 @@ void mostrarInterfaceLogin() {
     
     gotoxy(startX + 12, startY + 3);
 
-    // Mensagem de instruÁ„o
+    // Mensagem de instru√ß√£o
 }
 
 int main() {
     mostrarInterfaceLogin();
     getch();
-    // Aqui vocÍ pode adicionar a lÛgica de captura de dados e validaÁ„o
+    // Aqui voc√™ pode adicionar a l√≥gica de captura de dados e valida√ß√£o
 
     return 0;
 }
